@@ -12,7 +12,7 @@ spl_autoload_register(function ($class_name) {
 
 </head>
 <body>
-
+    <?php require_once "../macros/menu.php"; ?>
 </body>
 </html>
 
