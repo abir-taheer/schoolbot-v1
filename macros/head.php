@@ -11,6 +11,10 @@
 <script defer>
     $(window).ready(()=>{
         window.mdc.autoInit();
+        let buttons = document.querySelectorAll(".mdc-button, .mdc-list-item");
+        for(let x = 0; x < buttons.length ; x++){
+            mdc.ripple.MDCRipple.attachTo(buttons[x]);
+        }
         var drawer = new mdc.drawer.MDCDrawer(document.querySelector('.mdc-drawer'));
         const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
         topAppBar.setScrollTarget(document.getElementById('main-content'));

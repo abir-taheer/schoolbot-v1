@@ -13,6 +13,9 @@ spl_autoload_register(function ($class_name) {
 </head>
 <body>
     <?php require_once "../macros/menu.php"; ?>
+
+    <!-- Page Specific Head Content -->
+
 </body>
 </html>
 
