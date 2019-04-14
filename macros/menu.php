@@ -7,10 +7,17 @@
     </div>
     <div class="mdc-drawer__content">
         <nav class="mdc-list">
-            <a class="mdc-list-item mdc-list-item--activated" href="#" aria-selected="true">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-                <span class="mdc-list-item__text">Inbox</span>
-            </a>
+            <?php if( Session::hasSession() ): ?>
+                <a class="mdc-list-item mdc-list-item--activated" href="/signout.php" aria-selected="true">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">power_settings_new</i>
+                    <span class="mdc-list-item__text">Sign Out</span>
+                </a>
+            <?php else: ?>
+                <a class="mdc-list-item mdc-list-item--activated" href="/login.php?redirect=/home.php" aria-selected="true">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">lock_open</i>
+                    <span class="mdc-list-item__text">Log In</span>
+                </a>
+            <?php endif; ?>
             <a class="mdc-list-item" href="#">
                 <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
                 <span class="mdc-list-item__text">Outgoing</span>
@@ -23,6 +30,18 @@
     </div>
 </aside>
 
+<div class="mdc-snackbar">
+    <div class="mdc-snackbar__surface">
+        <div class="mdc-snackbar__label"
+             role="status"
+             aria-live="polite">
+            Can't send photo. Retry in 5 seconds.
+        </div>
+        <div class="mdc-snackbar__actions">
+            <button type="button" class="mdc-icon-button mdc-snackbar__action material-icons">clear</button>
+        </div>
+    </div>
+</div>
 <div class="mdc-drawer-scrim"></div>
 
 <div class="mdc-drawer-app-content">

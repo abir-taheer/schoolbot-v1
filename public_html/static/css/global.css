@@ -21,8 +21,11 @@ body {
 .mdc-drawer .mdc-list-item--activated {
     color: #fab1a0 !important;
 }
-.mdc-list-item__graphic, .mdc-drawer .mdc-list-item--activated {
+.mdc-list .mdc-list-item__graphic {
     color: #fab1a0 !important;
+}
+.mdc-list-item__graphic, .mdc-drawer .mdc-list-item--activated {
+    color: #e0735a !important;
 }
 .kashuan {
     font-family: 'Kaushan Script', cursive !important;
@@ -34,10 +37,16 @@ body {
     .open-txt {
         margin-top: 38%;
     }
+    .desktop-only {
+        display: none;
+    }
 }
 @media screen and (min-width: 801px){
     .open-txt {
         margin-top: 18%;
+    }
+    .mobile-only {
+        display: none;
     }
 }
 .open-txt {

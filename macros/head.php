@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
 <script defer>
+    var snackbar;
     $(window).ready(()=>{
         window.mdc.autoInit();
         let buttons = document.querySelectorAll(".mdc-button, .mdc-list-item");
@@ -26,5 +27,11 @@
         topAppBar.listen('MDCTopAppBar:nav', () => {
             drawer.open = !drawer.open;
         });
+        snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector(".mdc-snackbar"));
+        if( getCookie("notification") != "" ){
+
+            openSnackbar(atob(decodeURIComponent(getCookie("notification"))));
+            setCookie("notification", "", 7);
+        }
     });
 </script>

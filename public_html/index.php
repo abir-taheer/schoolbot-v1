@@ -18,12 +18,11 @@ spl_autoload_register(function ($class_name) {
             <div class="mdc-top-app-bar--fixed-adjust">
                 <h1 class="kashuan txt-ctr open-txt" id="opening-type"></h1>
                 <div class="flx-ctr">
-                    <button class="mdc-button kashuan mdc-button--raised start-button page-href" data-page="/login?redirect=home" style="display:none;">Get Started</button>
+                    <button class="mdc-button kashuan mdc-button--raised start-button page-href" data-page="/login.php?redirect=/home.php" style="display:none;">Get Started</button>
                 </div>
             </div>
         </main>
     </div>
-    <!-- Page Specific Head Content -->
 
 <script>
     new TypeIt('#opening-type', {
