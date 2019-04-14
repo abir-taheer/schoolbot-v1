@@ -1,8 +1,26 @@
-body {
-    margin: 0;
+.landing-bg-img {
     background: url("/static/img/main-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    transition: background 1s ease-in;
+}
+body {
+    margin: 0;
+}
+:root {
+    --mdc-theme-primary: #fab1a0 !important;
+}
+.lobster {
+    font-family: 'Lobster', cursive !important;
+}
+.mdc-drawer .mdc-list-item--activated {
+    color: #fab1a0 !important;
+}
+.mdc-list-item__graphic, .mdc-drawer .mdc-list-item--activated {
+    color: #fab1a0 !important;
 }

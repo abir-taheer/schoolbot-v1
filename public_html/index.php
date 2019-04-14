@@ -12,6 +12,7 @@ spl_autoload_register(function ($class_name) {
 
 </head>
 <body>
+    <div class="landing-bg-img"></div>
     <?php require_once "../macros/menu.php"; ?>
 
     <!-- Page Specific Head Content -->
