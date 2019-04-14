@@ -45,6 +45,38 @@ function returnCard($text_resp, $title, $image_url, $image_description, $button_
     exit;
 }
 
+function returnList($string){
+    echo "{
+  \"payload\": {
+    \"google\": {
+      \"expectUserResponse\": true,
+      \"richResponse\": {
+        \"items\": [
+          {
+            \"simpleResponse\": {
+              \"textToSpeech\": \"Here is this week's schedule:\"
+            }
+          }
+        ]
+      },
+      \"systemIntent\": {
+        \"intent\": \"actions.intent.OPTION\",
+        \"data\": {
+          \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",
+          \"listSelect\": {
+            \"title\": \"This Week's Schedule\",
+            \"items\": [
+              ".$string."
+            ]
+          }
+        }
+      }
+    }
+  }
+}";
+    exit;
+}
+
 function returnSimple($message){
     echo "{\"fulfillmentText\": \"".addslashes($message)."\"}";
     exit;
@@ -60,5 +92,40 @@ if( ! User::existsGoogleUser($user_id) ){
     exit;
 }
 
+$user = User::getUserFromApp($user_id);
+
+$intent = $input["queryResult"]["intent"]["name"];
+
 // Figure out what intent they want and response appropriately
-returnSimple("Hello");
+switch($intent){
+    case "projects/myschool-2dc85/agent/intents/fdaad76f-c4f6-4602-802b-a80c76c4d9db":
+        returnSimple("Hello ".$user->first);
+    case "projects/myschool-2dc85/agent/intents/8f9cb691-1d40-407b-83a5-5d3de4b9acab":
+        $school = $user->getSchools()[0];
+        $update = $school->getUpdates()[0];
+        returnCard("Here is the most recent update:", $update["title"], $update["pic"], "Update Image", "View Update", "https://schoolbot.org/schools.php?id=".$school->school_code);
+    case "projects/myschool-2dc85/agent/intents/6835033a-38a9-4c08-915e-aae750431d8d":
+        $school = $user->getSchools()[0];
+        $form = $school->getClosestResource($input["queryResult"]["parameters"]["form"]);
+        returnCard("Here is the form I think you're looking for: ", $form["name"], "https://schoolbot.org/static/img/file.png", "File Image", "View Resource", $form["url"]);
+    case "projects/myschool-2dc85/agent/intents/c901a768-9c3d-4c4d-9e67-c8287117159f":
+        $school = $user->getSchools()[0];
+        $days = $school->getSchedule();
+        $string = "";
+        $lastElement = end($days);
+        foreach($days as $day){
+            $string .= "{
+                \"optionInfo\": {
+                  \"key\": \"".$day["date"]."\"
+                },
+                \"description\": \"Schedule for that day: ".$day["day_type"]."\",
+                \"title\": \"".$day["date"]."\"
+              }";
+            if( $day !== $lastElement ){
+                $string.= ",";
+            }
+        }
+        returnList($string);
+
+}
+returnSimple("Hello ".$user->first);

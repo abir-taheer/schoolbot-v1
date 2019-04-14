@@ -18,13 +18,13 @@
                     <span class="mdc-list-item__text">Log In</span>
                 </a>
             <?php endif; ?>
-            <a class="mdc-list-item" href="#">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-                <span class="mdc-list-item__text">Outgoing</span>
+            <a class="mdc-list-item" href="/">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+                <span class="mdc-list-item__text">Home</span>
             </a>
             <a class="mdc-list-item" href="#">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-                <span class="mdc-list-item__text">Drafts</span>
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">screen_share</i>
+                <span class="mdc-list-item__text">Presentation</span>
             </a>
         </nav>
     </div>

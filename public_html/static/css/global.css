@@ -64,3 +64,16 @@ body {
     height: 70px;
     margin: 20px 0 0 0;
 }
+.arch {
+    font-family: 'Architects Daughter', cursive !important;
+}
+.sub-container {
+    width: 90%;
+    margin-left: 5%;
+}
+.rl-padding {
+    padding: 0 10px;
+}
+.raleway {
+    font-family: 'Raleway', sans-serif !important;
+}

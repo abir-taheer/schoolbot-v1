@@ -38,10 +38,24 @@ class User {
         return password_verify ( $pass , $this->password );
     }
 
-    public function newUser($first, $last, $email, $password){
+    public static function newUser($first, $last, $email, $password){
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $uid = bin2hex(random_bytes(32));
         Database::secureQuery("INSERT INTO `users` (`user_id`, `first`, `last`, `email`, `password`) VALUES (:uid, :f, :l, :e, :p)", array(":uid"=>$uid, ":f"=>$first, ":l"=>$last, ":e"=>$email, ":p"=>$hashed_password), null);
         return new User($uid);
+    }
+
+    public function addApp($code, $title){
+        $newcode = new LinkCode($code);
+        Database::secureQuery("INSERT INTO `user_app_assoc`(`title`, `app_user_id`, `app_id`, `user_id`) VALUES (:t, :aui, :ai, :ui)", array(":t"=>$title, ":aui"=>$newcode->app_user_id, ":ai"=>$newcode->app_id, ":ui"=>$this->user_id), null);
+    }
+
+    public function getSchools(){
+        $data = Database::secureQuery("SELECT * FROM `schools` INNER JOIN `user_school_assoc` usc on usc.school_id = schools.id WHERE usc.user_id = :uid", array(":uid"=>$this->user_id), null);
+        $schools = [];
+        foreach( $data as $d ){
+            $schools[] = new School($d["id"]);
+        }
+        return $schools;
     }
 }

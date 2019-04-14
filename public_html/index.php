@@ -3,6 +3,10 @@ require_once "../config.php";
 spl_autoload_register(function ($class_name) {
     require_once "../classes/".$class_name . ".php";
 });
+
+if(Session::hasSession()){
+    header("Location: /home.php");
+}
 ?>
 <!-- https://github.com/abir-taheer/technight2019 -->
 <!DOCTYPE html>
@@ -27,7 +31,7 @@ spl_autoload_register(function ($class_name) {
 <script>
     new TypeIt('#opening-type', {
         speed: 50
-    }).pause(500).type("The the future of communication").pause(1000).type(" is here!").exec(async () => {
+    }).pause(500).type("The future of communication").pause(500).type(" is here!").exec(async () => {
         await new Promise((resolve, reject) => {
             setTimeout(() => {
                 $(".start-button").fadeIn();
