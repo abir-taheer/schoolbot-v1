@@ -1,5 +1,10 @@
 <?php require_once "../config.php"; ?>
 <aside class="mdc-drawer mdc-drawer--modal">
+    <div class="mdc-drawer__header">
+        <img class="drawer-logo" src="/static/img/logo.png">
+        <h3 class="mdc-drawer__title lobster">SchoolBot</h3>
+        <h6 class="mdc-drawer__subtitle"><?php echo Session::hasSession() ? htmlspecialchars(Session::getUser()->name) : "Not Signed In"; ?></h6>
+    </div>
     <div class="mdc-drawer__content">
         <nav class="mdc-list">
             <a class="mdc-list-item mdc-list-item--activated" href="#" aria-selected="true">
@@ -29,10 +34,3 @@
             </section>
         </div>
     </header>
-
-    <main class="main-content" id="main-content">
-        <div class="mdc-top-app-bar--fixed-adjust">
-
-        </div>
-    </main>
-</div>

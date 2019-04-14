@@ -1,8 +1,9 @@
 <?php
 class User {
-    public $user_id, $name, $email;
+    public $user_id, $name, $email, $constructed;
     public function __construct($user_id) {
         $data = Database::secureQuery("SELECT * FROM  `users` WHERE `user_id` = :uid", array(":uid" => $user_id), 'fetch');
+        $this->constructed = count($data) > 1;
         $this->user_id = $data["user_id"];
         $this->name = $data["name"];
         $this->email = $data["email"];

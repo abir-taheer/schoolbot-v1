@@ -24,3 +24,34 @@ body {
 .mdc-list-item__graphic, .mdc-drawer .mdc-list-item--activated {
     color: #fab1a0 !important;
 }
+.kashuan {
+    font-family: 'Kaushan Script', cursive !important;
+}
+.txt-ctr {
+    text-align: center;
+}
+@media screen and (max-width: 800px){
+    .open-txt {
+        margin-top: 38%;
+    }
+}
+@media screen and (min-width: 801px){
+    .open-txt {
+        margin-top: 18%;
+    }
+}
+.open-txt {
+    font-size: 45px;
+    padding: 0 20px;
+}
+.fear {
+    display: none;
+}
+.flx-ctr {
+    display: flex;
+    justify-content: center;
+}
+.drawer-logo {
+    height: 70px;
+    margin: 20px 0 0 0;
+}
